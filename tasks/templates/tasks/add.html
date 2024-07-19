@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Adicionar{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/forms.css' %}">
+<form action="/add/" id="form" method="post" style="margin-top: 50px;">
+    {% csrf_token %}
+    {{ form }}
+    <input  class="btn btn-primary" type="submit" value="Criar"  style="margin-top: 3%;">
+    <a href="\" class="btn btn-primary"   style="margin-top: 3%;">Voltar <i class="fa-solid fa-backward" style="color: #ffffff;"></i></a>
+</form>
+{% endblock %}

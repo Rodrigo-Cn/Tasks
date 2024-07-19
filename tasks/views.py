@@ -1,0 +1,67 @@
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Tasks
+from django.template import loader
+from django.http import HttpResponse
+from .forms import TasksForm
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def tasks(request):
+    getter = request.GET
+    dic = {}
+
+    if(getter):
+        for key, value in getter.items():
+            if key == "titulo":
+                dic[str(key)+"__contains"] = value
+        template = loader.get_template("tasks/home.html")
+        tarefas = Tasks.objects.filter(**dic)
+        context = {'tarefas': tarefas}
+    else:
+        template = loader.get_template("tasks/home.html")
+        tarefas = Tasks.objects.all()
+        context = {'tarefas': tarefas}
+
+    return HttpResponse(template.render(context, request))
+
+@login_required
+def detail(request,id):
+    template = loader.get_template("tasks/detail.html")
+    tarefa = Tasks.objects.get(pk=id)
+    context = {'tarefa': tarefa}
+    return HttpResponse(template.render(context, request))
+
+@login_required
+def add(request):
+
+    if request.method == "POST":
+        form = TasksForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('taskshome')
+    
+    else:
+        form = TasksForm
+        return render(request,"tasks/add.html",{'form':form})
+
+@login_required
+def edit(request, id):
+
+    task = Tasks.objects.get(pk=id)
+
+    if request.method == "POST":
+        form = TasksForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+        return redirect('taskshome')
+    
+    else:
+        form = TasksForm(instance=task)
+        return render(request,"tasks/edit.html",{'form':form, 'task':task})
+
+@login_required  
+def delete(request, id):
+    task = get_object_or_404(Tasks, pk=id)
+    task.delete()
+    return redirect('taskshome')
+

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Detail {{ tarefa.id }}{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/detail.css' %}">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{% static 'img/usuario.jpg' %}" alt="Imagem de capa do card">
+        <div class="card-body">
+            <h5 class="card-title">Titulo: {{ tarefa.titulo }}</h5>
+            <h5 class="card-title">Status: {{ tarefa.status }}</h5>
+            <h5 class="card-title">Data: {{ tarefa.data }}</h5>
+            <h5 class="card-title">Horário: {{ tarefa.horario }}</h5>
+            <p class="card-text">Conteúdo: {{ tarefa.descricao }}</p>
+            <a href="\" class="btn btn-primary">Voltar</a>
+        </div>
+    </div>
+{% endblock %}

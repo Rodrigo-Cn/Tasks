@@ -1,0 +1,22 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block title %}Logar{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<div class="wrapper fadeInDown">
+  
+    <div class="content-login">
+  
+        <h2 class="active"> Login </h2>
+  
+        <form class="box-login" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class="botao" value="Entrar">
+        </form>
+        
+    </div>
+  </div>
+{% endblock %}

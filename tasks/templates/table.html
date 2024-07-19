@@ -1,0 +1,20 @@
+<table class="table"  style="margin-top: 50px;">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Detalhes</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Deletar</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for tarefa in tarefas %}
+            <tr>
+                <td scope="row">{{ tarefa.titulo }}</td>
+                <td><a href="detail/{{ tarefa.id }}">Ver detalhes</a></td>
+                <td><a href="edit/{{ tarefa.id }}"><i class="fa-solid fa-pen-to-square" style="color: #74C0FC;"></i></a></td>
+                <td><a href="{% url 'delete_task' tarefa.id %}"><i class="fa-solid fa-trash" style="color: #74C0FC;"></i></a></td>
+            </tr> 
+        {% endfor %}
+    </tbody>
+  </table>
