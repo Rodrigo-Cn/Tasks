@@ -1,0 +1,11 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/forms.css' %}">
+<form action="/accounts/add/" id="form" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" class="form-control" value="Criar" style="margin-top: 15px; background-color: blue; color: white;">
+</form>
+{% endblock %}
