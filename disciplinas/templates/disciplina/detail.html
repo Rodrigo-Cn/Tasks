@@ -1,0 +1,22 @@
+{% extends 'base3.html' %}
+{% load static %}
+
+{% block title %}Detalhe {{ disciplina.id }}{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/detail.css' %}">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{% static 'img/usuario.jpg' %}" alt="Imagem de capa do card">
+        <div class="card-body">
+            <h5 class="card-title">Nome: {{ disciplina.nome }}</h5>
+            <h5 class="card-title">Carga Horária: {{ disciplina.carga_horaria }} hora(s)</h5>
+            <h5 class="card-title">Ementa: {{ disciplina.ementa }}</h5>
+            <h5 class="card-title">Descrição: {{ disciplina.descricao }}</h5>
+            <p class="card-text">Bibliografia: {{ disciplina.bibliografia }}</p>
+            {% if disciplina.disciplina_requisito.nome %}
+                <p class="card-text">Disciplina pré-requisito: {{ disciplina.disciplina_requisito.nome }}</p>
+            {% endif %}
+            <a href="/disciplina/" class="btn btn-primary">Voltar</a>
+        </div>
+    </div>
+{% endblock %}

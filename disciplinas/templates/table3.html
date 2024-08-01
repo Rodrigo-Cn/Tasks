@@ -1,0 +1,16 @@
+<table class="table"  style="margin-top: 50px;">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Detalhes</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for tarefa in tarefas %}
+            <tr>
+                <td scope="row">{{ disciplina.nome }}</td>
+                <td><a href="detail/{{ disciplina.id }}">Ver detalhes</a></td>
+            </tr> 
+        {% endfor %}
+    </tbody>
+  </table>

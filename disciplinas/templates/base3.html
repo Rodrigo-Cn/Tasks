@@ -16,13 +16,12 @@
   <nav class="navbar bg-body-tertiary" style="margin-bottom: 70px;">
     <div class="container">
       <a class="navbar-brand" href="/">
-        <h3>
-        <img src="{% static 'img/tasks.png' %}" alt="Bootstrap" width="50" height="44">
+        <h3><img src="{% static 'img/tasks.png' %}" alt="Bootstrap" width="50" height="44">
         Tasks</h3>
       </a>
       <h5>
-        <a href="{% url 'disciplinashome' %}" style="text-decoration: none; color: black;">
-          Disciplinas
+        <a href="{% url 'taskshome' %}" style="text-decoration: none; color: black;">
+          Home
         </a>
       </h5>
       <form action="{% url 'logout' %}" method="post" id="form-logout">

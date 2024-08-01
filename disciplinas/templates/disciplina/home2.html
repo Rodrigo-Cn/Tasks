@@ -1,0 +1,20 @@
+{% extends 'base3.html' %}
+{% load static %}
+
+{% block title %}Lista{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<div class="container-flex" id="container-home">
+    <form action="/disciplina/" method="get">
+        <div class="input-group mb-3">
+            <input type="text" name="nome" class="form-control" placeholder="Digite o nome da Task" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </div>
+    </form>
+    <br>
+    <br>
+    <br>
+    {% include 'table3.html' %}
+</div>
+{% endblock %}
