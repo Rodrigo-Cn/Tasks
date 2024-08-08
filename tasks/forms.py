@@ -11,6 +11,6 @@ class TasksForm(ModelForm):
             'titulo' : forms.TextInput(attrs={'class':'form-control form-control-user'}),
             'descricao' : forms.TextInput(attrs={'class':'form-control form-control-user'}),
             'status' : forms.TextInput(attrs={'class':'form-control form-control-user'}),
-            'data' : forms.TextInput(attrs={'class':'form-control form-control-user'}),
-            'horario' : forms.TextInput(attrs={'class':'form-control form-control-user'}),
+            'data' : forms.DateInput(attrs={'class':'form-control form-control-user'}),
+            'horario' : forms.TimeInput(attrs={'class':'form-control form-control-user'}),
         }

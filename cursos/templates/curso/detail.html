@@ -1,0 +1,16 @@
+{% extends 'base3.html' %}
+{% load static %}
+
+{% block title %}Detalhe {{ curso.id }}{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/detail.css' %}">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{% static 'img/usuario.jpg' %}" alt="Imagem de capa do card">
+        <div class="card-body">
+            <h5 class="card-title">Nome: {{ curso.nome }}</h5>
+            <h5 class="card-title">Descrição: {{ curso.descricao }}</h5>
+            <a href="/curso/" class="btn btn-primary">Voltar</a>
+        </div>
+    </div>
+{% endblock %}

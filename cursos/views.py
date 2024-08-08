@@ -1,8 +1,9 @@
+from django.shortcuts import render
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Disciplina
+from .models import Curso
 from django.template import loader
 from django.http import HttpResponse
-from .forms import DisciplinaForm
+from .forms import CursoForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib import messages
@@ -14,7 +15,7 @@ def isProfessor(user):
     return user.groups.filter(name='Professores').exists()
 
 @login_required
-def disciplinas(request):
+def cursos(request):
     getter = request.GET
     dic = {}
 
@@ -24,29 +25,29 @@ def disciplinas(request):
                 dic[str(key)+"__contains"] = value
 
         if(isAluno(request.user)):
-            template = loader.get_template("disciplina/home2.html")
+            template = loader.get_template("curso/home2.html")
         else:
-            template = loader.get_template("disciplina/home.html")
+            template = loader.get_template("curso/home.html")
 
-        disciplinas = Disciplina.objects.filter(**dic)
-        context = {'disciplinas': disciplinas, 'user': request.user}
+        cursos = Curso.objects.filter(**dic)
+        context = {'cursos': cursos, 'user': request.user}
 
     else:
         if(isAluno(request.user)):
-            template = loader.get_template("disciplina/home2.html")
+            template = loader.get_template("curso/home2.html")
         else:
-            template = loader.get_template("disciplina/home.html")
+            template = loader.get_template("curso/home.html")
 
-        disciplinas = Disciplina.objects.all()
-        context = {'disciplinas': disciplinas, 'user': request.user}
+        cursos = Curso.objects.all()
+        context = {'cursos': cursos, 'user': request.user}
 
     return HttpResponse(template.render(context, request))
 
 @login_required
 def detail(request,id):
-    template = loader.get_template("disciplina/detail.html")
-    disciplina = Disciplina.objects.get(pk=id)
-    context = {'disciplina': disciplina}
+    template = loader.get_template("curso/detail.html")
+    curso = Curso.objects.get(pk=id)
+    context = {'curso': curso}
     return HttpResponse(template.render(context, request))
 
 @login_required
@@ -54,39 +55,38 @@ def detail(request,id):
 def add(request):
 
     if request.method == "POST":
-        form = DisciplinaForm(request.POST)
+        form = CursoForm(request.POST)
         if form.is_valid():
             form.save()
-
         messages.success(request, "Disciplina adicionada com sucesso")
-        return redirect('disciplinashome')
+        return redirect('cursoshome')
     
     else:
-        form = DisciplinaForm
-        return render(request,"disciplina/add.html",{'form':form})
+        form = CursoForm()
+        return render(request,"curso/add.html",{'form':form})
 
 @login_required
 @user_passes_test(isProfessor, login_url='/')
 def edit(request, id):
 
-    disciplina = Disciplina.objects.get(pk=id)
+    curso = Curso.objects.get(pk=id)
 
     if request.method == "POST":
-        form = DisciplinaForm(request.POST, instance=disciplina)
+        form = CursoForm(request.POST, instance=curso)
         if form.is_valid():
             form.save()
-        return redirect('disciplinashome')
+        return redirect('cursoshome')
     
     else:
-        form = DisciplinaForm(instance=disciplina)
-        return render(request,"disciplina/edit.html",{'form':form, 'disciplina':disciplina})
+        form = CursoForm(instance=curso)
+        return render(request,"curso/edit.html",{'form':form, 'curso':curso})
 
 @login_required 
 @user_passes_test(isProfessor, login_url='/')
 def delete(request, id):
-    disciplina = get_object_or_404(Disciplina, pk=id)
-    disciplina.delete()
-    return redirect('disciplinashome')
+    curso = get_object_or_404(Curso, pk=id)
+    curso.delete()
+    return redirect('cursoshome')
 
 
 

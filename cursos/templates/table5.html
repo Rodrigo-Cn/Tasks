@@ -6,10 +6,10 @@
       </tr>
     </thead>
     <tbody>
-        {% for disciplina in disciplinas %}
+        {% for curso in cursos %}
             <tr>
-                <td scope="row">{{ disciplina.nome }}</td>
-                <td><a href="detail/{{ disciplina.id }}">Ver detalhes</a></td>
+                <td scope="row">{{ curso.nome }}</td>
+                <td><a href="detail/{{ curso.codigo }}">Ver detalhes</a></td>
             </tr> 
         {% endfor %}
     </tbody>
