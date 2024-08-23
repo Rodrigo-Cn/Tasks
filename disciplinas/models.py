@@ -15,7 +15,7 @@ class Disciplina(models.Model):
         null=True
     )
 
-    curso = models.ForeignKey(Curso, on_delete=models.CASCADE, null=True, blank=True)
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE, blank=True)
 
     def __str__(self):
         return self.nome

@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
-from .forms import PessoasForm
+from alunos.forms import AlunosForm
 from django.contrib.auth.models import Group
 
 def add(request):
     if request.method == "POST":
-        form = PessoasForm(request.POST)
+        form = AlunosForm(request.POST)
         
         if form.is_valid():
             user = form.save(commit=False)
@@ -14,6 +14,6 @@ def add(request):
             
             return redirect('taskshome')
     else:
-        form = PessoasForm()
+        form = AlunosForm()
     
     return render(request, "registration/add.html", {'form': form})

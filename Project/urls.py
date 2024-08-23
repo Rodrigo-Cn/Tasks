@@ -4,6 +4,7 @@ from tasks import urls
 from accounts import urls
 from disciplinas import urls
 from cursos import urls
+from turmas import urls
 
 
 urlpatterns = [
@@ -11,6 +12,7 @@ urlpatterns = [
     path('', include('tasks.urls')),
     path('disciplina/',include('disciplinas.urls')),
     path('curso/',include('cursos.urls')),
+    path('turma/',include('turmas.urls')),
     path("accounts/",include('pessoas.urls')),
     path("accounts/",include('django.contrib.auth.urls')),
 ]

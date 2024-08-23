@@ -25,6 +25,16 @@
           Disciplinas
         </a>
       </h5>
+      <h5>
+        <a href="{% url 'turmashome' %}" style="text-decoration: none; color: black;">
+          Turmas
+        </a>
+      </h5>
+      <h5>
+        <a href="{% url 'cursoshome' %}" style="text-decoration: none; color: black;">
+          Cursos
+        </a>
+      </h5>
       <form action="{% url 'logout' %}" method="post" id="form-logout">
         <h5><i class="fa-regular fa-user"></i>  {{ user.username }}</h5>
         {% csrf_token %}

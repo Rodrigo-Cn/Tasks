@@ -57,14 +57,17 @@ def add(request):
         form = DisciplinaForm(request.POST)
         if form.is_valid():
             form.save()
-
-        messages.success(request, "Disciplina adicionada com sucesso")
-        return redirect('disciplinashome')
+            messages.success(request, "Disciplina adicionada com sucesso")
+            return redirect('disciplinashome')
+        else:
+            # Adiciona uma mensagem de erro e retorna a página com o formulário para correção
+            messages.error(request, "Erro ao adicionar a disciplina. Verifique os dados informados.")
+            return render(request, "disciplina/add.html", {'form': form})
     
     else:
-        form = DisciplinaForm
-        return render(request,"disciplina/add.html",{'form':form})
-
+        form = DisciplinaForm()
+        return render(request, "disciplina/add.html", {'form': form})
+    
 @login_required
 @user_passes_test(isProfessor, login_url='/')
 def edit(request, id):

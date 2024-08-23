@@ -1,0 +1,19 @@
+{% extends 'base3.html' %}
+{% load static %}
+
+{% block title %}Detalhe Turma {{ turma.ano }} - {{ turma.semestre }}º Semestre{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/detail.css' %}">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{% static 'img/usuario.jpg' %}" alt="Imagem de capa do card">
+        <div class="card-body">
+            <h5 class="card-title">Ano: {{ turma.ano }}</h5>
+            <h5 class="card-title">Semestre: {{ turma.semestre }}º</h5>
+            <h5 class="card-title">Horários: {{ turma.horarios }}</h5>
+            <h5 class="card-title">Disciplina: {{ turma.disciplina.nome }}</h5>
+            <h5 class="card-title">Professor: {{ turma.professor.nome }}</h5>
+            <a href="/turma/" class="btn btn-primary">Voltar</a>
+        </div>
+    </div>
+{% endblock %}

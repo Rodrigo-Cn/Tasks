@@ -1,0 +1,15 @@
+{% extends 'base3.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Editar{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/forms.css' %}">
+<form id="form" action="/turma/edit/{{ turma.id }}/" method="post" style="margin-top: 100px;">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <input  style="margin-top: 3%;"   class="btn btn-primary" type="submit" value="Editar">
+    <a href="\turma\" class="btn btn-primary"   style="margin-top: 3%;">Voltar <i class="fa-solid fa-backward" style="color: #ffffff;"></i></a>
+</form>
+{% endblock %}

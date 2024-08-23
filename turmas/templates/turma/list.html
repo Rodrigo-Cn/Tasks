@@ -1,0 +1,29 @@
+{% extends 'base4.html' %}
+{% load static %}
+
+{% block title %}Lista{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<div class="container-flex" id="container-home">
+    <table class="table"  style="margin-top: 150px; margin-bottom: 150px;">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nome</th>
+            <th scope="col">CPF</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for aluno in turma.alunos.all %}
+                <tr>
+                    <td>{{ aluno.id }}</td>
+                    <td>{{ aluno.nome }}</td>
+                    <td>{{ aluno.cpf }}</td>
+                </tr> 
+            {% endfor %}
+        </tbody>
+      </table>
+</div>
+{% endblock %}
+

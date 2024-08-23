@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'pessoas',
     'disciplinas',
     'cursos',
+    'turmas',
+    'alunos',
+    'professores',
     "crispy_forms",
     "crispy_bootstrap4",
 ]

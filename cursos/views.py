@@ -58,7 +58,7 @@ def add(request):
         form = CursoForm(request.POST)
         if form.is_valid():
             form.save()
-        messages.success(request, "Disciplina adicionada com sucesso")
+        messages.success(request, "Curso adicionado com sucesso")
         return redirect('cursoshome')
     
     else:

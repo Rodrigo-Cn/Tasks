@@ -1,0 +1,24 @@
+<table class="table"  style="margin-top: 50px;">
+    <thead>
+      <tr>
+        <th scope="col">Ano</th>
+        <th scope="col">Semestre</th>
+        <th scope="col">Dia</th>
+        <th scope="col">Horário</th>
+        <th scope="col">Professor</th>
+        <th scope="col">Detalhes</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for turma in turmas %}
+            <tr>
+                <td scope="row">{{ turma.ano }}</td>
+                <td scope="row">{{ turma.semestre }}</td>
+                <td scope="row">{{ turma.dia_semana }}</td>
+                <td scope="row">{{ turma.horarios }}</td>
+                <td scope="row">{{ turma.professor.nome }}</td>
+                <td><a href="detail/{{ turma.id }}">Ver detalhes</a></td>
+            </tr> 
+        {% endfor %}
+    </tbody>
+  </table>

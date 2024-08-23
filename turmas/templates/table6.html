@@ -1,0 +1,48 @@
+  <table class="table"  style="margin-top: 50px;">
+    <thead>
+      <tr>
+        <th scope="col">Ano</th>
+        <th scope="col">Semestre</th>
+        <th scope="col">Dia</th>
+        <th scope="col">Horário</th>
+        <th scope="col">Professor</th>
+        <th scope="col">Listar Alunos</th>
+        <th scope="col">Detalhes</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Apagar</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for turma in turmas %}
+            <tr>
+                <td scope="row">{{ turma.ano }}</td>
+            <td scope="row">{{ turma.semestre }}º</td>
+                <td scope="row">
+                  {% if turma.dia_semana == 2 %}
+                    Segunda-feira
+                  {% elif turma.dia_semana == 3 %}
+                    Terça-feira
+                  {% elif turma.dia_semana == 4 %}
+                    Quarta-feira
+                  {% elif turma.dia_semana == 5 %}
+                    Quinta-feira
+                  {% elif turma.dia_semana == 6 %}
+                    Sexta-feira
+                  {% elif turma.dia_semana == 7 %}
+                    Sábado
+                  {% elif turma.dia_semana == 1 %}
+                    Domingo
+                  {% else %}
+                    Dia inválido
+                  {% endif %}
+                </td>                
+                <td scope="row">{{ turma.horarios }}</td>
+                <td scope="row">{{ turma.professor.nome }}</td>
+                <td scope="row"><a href="{% url 'listar_alunos' turma.id %}">Listar Alunos</a></td>
+                <td><a href="detail/{{ turma.id }}">Ver detalhes</a></td>
+                <td><a href="/turma/edit/{{ turma.id }}/"><i class="fa-solid fa-pen-to-square" style="color: #74C0FC;"></i></a></td>
+                <td><a href="{% url 'delete_turma' turma.id %}"><i class="fa-solid fa-trash" style="color: #74C0FC;"></i></a></td>
+            </tr> 
+        {% endfor %}
+    </tbody>
+  </table>

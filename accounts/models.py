@@ -1,9 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import User
 
-class Usuario(AbstractUser, models.Model):
-
-    class Meta:
-        abstract = True
+class Usuario_Custom(User):
         
     nome = models.CharField(max_length=100)

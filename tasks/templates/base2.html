@@ -17,6 +17,21 @@
             <img src="{% static 'img/tasks.png' %}" alt="Bootstrap" width="50" height="44">
             Tasks</h3>
           </a>
+          <h5>
+            <a href="{% url 'disciplinashome' %}" style="text-decoration: none; color: black;">
+              Disciplinas
+            </a>
+          </h5>
+          <h5>
+            <a href="{% url 'turmashome' %}" style="text-decoration: none; color: black;">
+              Turmas
+            </a>
+          </h5>
+          <h5>
+            <a href="{% url 'cursoshome' %}" style="text-decoration: none; color: black;">
+              Cursos
+            </a>
+          </h5>
         </div>
     </nav>
     {% block content %}{% endblock %}

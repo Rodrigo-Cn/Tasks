@@ -3,6 +3,7 @@
       <tr>
         <th scope="col">Nome</th>
         <th scope="col">Pré-requisitos</th>
+        <th scope="col">Curso</th>
         <th scope="col">Detalhes</th>
         <th scope="col">Editar</th>
         <th scope="col">Deletar</th>
@@ -12,7 +13,16 @@
         {% for disciplina in disciplinas %}
             <tr>
                 <td scope="row">{{ disciplina.nome }}</td>
-
+                <td>
+                  {% if disciplina.disciplina_requisito.all %}
+                    {% for disc in disciplina.disciplina_requisito.all %}
+                      <span style="background-color: rgb(0, 106, 244); color: white; padding: 1px;">{{disc.nome}}</span>
+                    {% endfor %}
+                  {% else %}
+                    <span style="background-color: rgb(0, 106, 244); color: white; padding: 1px;">Sem Pré-requisitos</span>               
+                  {% endif %}
+                </td>
+                <td>{{ disciplina.curso.nome }}</td>
                 <td><a href="detail/{{ disciplina.id }}">Ver detalhes</a></td>
                 <td><a href="/disciplina/edit/{{ disciplina.id }}/"><i class="fa-solid fa-pen-to-square" style="color: #74C0FC;"></i></a></td>
                 <td><a href="{% url 'delete_disciplina' disciplina.id %}"><i class="fa-solid fa-trash" style="color: #74C0FC;"></i></a></td>
