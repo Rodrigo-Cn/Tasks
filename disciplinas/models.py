@@ -12,7 +12,6 @@ class Disciplina(models.Model):
         blank=True,
         related_name='disciplinas_relacionadas',
         symmetrical=False,
-        null=True
     )
 
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE, blank=True)

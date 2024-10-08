@@ -13,7 +13,7 @@
   
         <form class="box-login" method="post">
             {% csrf_token %}
-            {{form.as_p}}
+            {{ form.as_p }}
             <input type="submit" class="botao" value="Entrar">
             <a href="{% url 'add_user' %}">Registrar</a>
         </form>
@@ -21,3 +21,4 @@
     </div>
   </div>
 {% endblock %}
+
